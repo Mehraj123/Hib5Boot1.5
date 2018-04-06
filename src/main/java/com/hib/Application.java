@@ -25,15 +25,7 @@ public class Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-
-		/*
-		 * // Check database version String sql = "select version()";
-		 * 
-		 * String result = (String) session.createNativeQuery(sql).getSingleResult();
-		 * System.out.println("SQL version is : "+result);
-		 */
-
-		Person person = new Person("Stark Jr.");
+		Person person = new Person("Mehraj Malik");
 		session.save(person);
 		System.out.println("Saved!!");
 		session.getTransaction().commit();

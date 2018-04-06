@@ -24,6 +24,7 @@ public class HinernateConfig {
 			sessionFactory =  metadata.getSessionFactoryBuilder().build();
 			return sessionFactory;
 		} catch (Exception e) {
+			System.out.println("Exception occured while creating SessionFactory");
 			e.printStackTrace();
 			if (standardServiceRegistry != null) {
 				StandardServiceRegistryBuilder.destroy(standardServiceRegistry);
