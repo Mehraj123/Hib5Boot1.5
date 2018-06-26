@@ -4,17 +4,17 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.hib</groupId>
-	<artifactId>hib5boot1.5</artifactId>
+	<artifactId>hib5boot2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>hib5boot1.5</name>
-	<description>Demo project for Spring Boot 1.5 and hibernate 5</description>
+	<name>hib5boot2</name>
+	<description>Demo project for Spring Boot 2 and hibernate 5</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.RELEASE</version>
+		<version>2.0.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
