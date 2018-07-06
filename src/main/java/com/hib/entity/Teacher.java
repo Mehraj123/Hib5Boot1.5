@@ -1,6 +1,9 @@
 package com.hib.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * @author Mehraj Malik
@@ -18,10 +21,16 @@ public class Teacher {
     @Column(name = "DEPARTMENT")
     private String dept;
 
-
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "STUDENT_FK")
-    private Student student;
+    /**
+     * Many teachers can be interacting to many students
+     */
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(name = "JOIN_STUDENT_TEACHER",
+            joinColumns = {@JoinColumn(name = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "rollNo")}
+    )
+    private Set<Student> studentSet;
 
     public Integer getId() {
         return id;
@@ -47,11 +56,11 @@ public class Teacher {
         this.dept = dept;
     }
 
-    public Student getStudent() {
-        return student;
+    public Set<Student> getStudentSet() {
+        return studentSet;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudentSet(Set<Student> studentSet) {
+        this.studentSet = studentSet;
     }
 }

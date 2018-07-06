@@ -50,7 +50,7 @@ public class StudentServiceImpl implements StudentService {
                teacherSet.add(teacher);
            }
         }
-        studentRequest.setTeachers(teacherSet);
+        studentRequest.setTeacherSet(teacherSet);
         return studentRepository.save(studentRequest);
     }
 

@@ -20,10 +20,14 @@ public class Student {
 	private Laptop laptop;
 
     /**
-     * One Student can be interacting with one or more teachers
+     * Many Student can be interacting more teachers
      */
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "student",fetch = FetchType.EAGER)
-	private Set<Teacher> teachers;
+    @ManyToMany
+    @JoinTable(name = "JOIN_STUDENT_TEACHER",
+            joinColumns = {@JoinColumn(name = "rollNo")},
+            inverseJoinColumns = {@JoinColumn(name = "id")}
+            )
+	private Set<Teacher> teacherSet;
 
 	public Student() {
 	}
@@ -49,15 +53,6 @@ public class Student {
         this.laptop = laptop;
     }
 
-    public Set<Teacher> getTeachers() {
-        return teachers;
-    }
-
-    public void setTeachers(Set<Teacher> teachers) {
-        this.teachers = teachers;
-    }
-
-
     public Integer getRollNo() {
         return rollNo;
     }
@@ -66,13 +61,11 @@ public class Student {
         this.rollNo = rollNo;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "rollNo=" + rollNo +
-                ", name='" + name + '\'' +
-                ", laptop=" + laptop +
-                ", teachers=" + teachers +
-                '}';
+    public Set<Teacher> getTeacherSet() {
+        return teacherSet;
+    }
+
+    public void setTeacherSet(Set<Teacher> teacherSet) {
+        this.teacherSet = teacherSet;
     }
 }
