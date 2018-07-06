@@ -8,6 +8,9 @@ import com.hib.service.TeacherService;
 import com.hib.util.StudentVM;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student findById(Integer studentId) {
+    public Student findById (Integer studentId) {
         return studentRepository.findById(studentId).orElse(null);
     }
 
@@ -41,6 +44,9 @@ public class StudentServiceImpl implements StudentService {
     public Student save(StudentVM student) {
 
         Student studentRequest = new Student();
+        studentRequest.setLocalDate(LocalDate.now());
+        studentRequest.setLocalDateTime(LocalDateTime.now());
+        studentRequest.setDuration(Duration.ofDays(20));
         studentRequest.setName(student.getName());
         studentRequest.setLaptop(student.getLaptop());
         Set<Teacher> teacherSet = new HashSet<>();

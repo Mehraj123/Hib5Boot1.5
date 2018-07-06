@@ -1,6 +1,9 @@
 package com.hib.entity;
 
 import javax.persistence.*;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -18,6 +21,12 @@ public class Student {
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "LAPTOP_ID_FK")
 	private Laptop laptop;
+
+	private LocalDate localDate;
+
+	private LocalDateTime localDateTime;
+
+	private Duration duration;
 
     /**
      * Many Student can be interacting more teachers
@@ -67,5 +76,29 @@ public class Student {
 
     public void setTeacherSet(Set<Teacher> teacherSet) {
         this.teacherSet = teacherSet;
+    }
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
     }
 }
