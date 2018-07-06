@@ -1,10 +1,11 @@
 package com.hib.controller;
 
-import com.hib.entity.Laptop;
 import com.hib.entity.Student;
 import com.hib.service.StudentService;
 import com.hib.util.StudentVM;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author Mehraj Malik
@@ -16,23 +17,33 @@ public class StudentController {
 
     private StudentService studentService;
 
-    public StudentController(StudentService studentService){
+    public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
 
- @GetMapping("/{id}")
- public Student findById(@PathVariable Integer id){
-        return studentService.findById(id);
- }
+    @GetMapping
+    public List<Student> getAll() {
+        return studentService.findAll();
+    }
 
- @PostMapping
- public Student save(@RequestBody StudentVM student){
-       return studentService.save(student);
- }
+    @GetMapping("/{id}")
+    public Student findById(@PathVariable Integer id) {
+        return studentService.findById(id);
+    }
+
+    @PostMapping
+    public Student save(@RequestBody StudentVM student) {
+        return studentService.save(student);
+    }
 
     @DeleteMapping("/{id}")
-    public Integer deleteById(@PathVariable Integer id){
+    public Integer deleteById(@PathVariable Integer id) {
         return studentService.deleteById(id);
+    }
+
+    @GetMapping("/names/{name}")
+    public Student findByNameLike(@PathVariable String name) {
+        return studentService.findByName(name);
     }
 
 }

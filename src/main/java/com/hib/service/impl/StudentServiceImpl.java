@@ -9,6 +9,7 @@ import com.hib.util.StudentVM;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -33,7 +34,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student findByName(String studentName) {
-        return studentRepository.findByName(studentName).orElse(null);
+        return studentRepository.findByNameIgnoreCaseContaining(studentName).orElse(null);
     }
 
     @Override
@@ -52,6 +53,11 @@ public class StudentServiceImpl implements StudentService {
         }
         studentRequest.setTeacherSet(teacherSet);
         return studentRepository.save(studentRequest);
+    }
+
+    @Override
+    public List<Student> findAll() {
+        return studentRepository.findAll();
     }
 
     public Integer deleteById(Integer studentId){

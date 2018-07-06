@@ -4,6 +4,8 @@ import com.hib.entity.Student;
 import com.hib.util.StudentVM;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author Mehraj Malik
  * @version 1.0
@@ -14,4 +16,5 @@ public interface StudentService {
     Student findByName(String studentName);
     Student save(StudentVM student);
     Integer deleteById(Integer studentId);
+    List<Student> findAll();
 }
