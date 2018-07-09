@@ -2,8 +2,6 @@ package com.hib.util;
 
 import com.hib.entity.Laptop;
 
-import java.util.Set;
-
 /**
  * @author Mehraj Malik
  * @version 1.0
@@ -12,7 +10,8 @@ public class StudentVM {
     private Integer id;
     private String name;
     private Laptop laptop;
-    private Set<Integer> teacherIds;
+    private Integer rank;
+    private String dept;
 
     public Integer getId() {
         return id;
@@ -38,21 +37,19 @@ public class StudentVM {
         this.laptop = laptop;
     }
 
-    public Set<Integer> getTeacherIds() {
-        return teacherIds;
+    public Integer getRank() {
+        return rank;
     }
 
-    public void setTeacherIds(Set<Integer> teacherIds) {
-        this.teacherIds = teacherIds;
+    public void setRank(Integer rank) {
+        this.rank = rank;
     }
 
-    @Override
-    public String toString() {
-        return "StudentVM{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", laptop=" + laptop +
-                ", teacherIds=" + teacherIds +
-                '}';
+    public String getDept() {
+        return dept;
+    }
+
+    public void setDept(String dept) {
+        this.dept = dept;
     }
 }

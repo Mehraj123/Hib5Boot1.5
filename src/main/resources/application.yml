@@ -6,5 +6,9 @@ spring:
   jpa :
     generate-ddl : true
     hibernate :
-      ddl-auto: update
+      ddl-auto: create
+    properties :
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        format_sql : true
     show-sql : true

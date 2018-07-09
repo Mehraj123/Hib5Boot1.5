@@ -17,4 +17,5 @@ public interface StudentService {
     Student save(StudentVM student);
     Integer deleteById(Integer studentId);
     List<Student> findAll();
+    List<String> getAllNames();
 }

@@ -1,19 +1,13 @@
 package com.hib.service.impl;
 
 import com.hib.entity.Student;
-import com.hib.entity.Teacher;
 import com.hib.repository.StudentRepository;
 import com.hib.service.StudentService;
-import com.hib.service.TeacherService;
 import com.hib.util.StudentVM;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Mehraj Malik
@@ -23,15 +17,13 @@ import java.util.Set;
 public class StudentServiceImpl implements StudentService {
 
     private StudentRepository studentRepository;
-    private TeacherService teacherService;
 
-    public StudentServiceImpl(StudentRepository personRepository,TeacherService teacherService){
+    public StudentServiceImpl(StudentRepository personRepository) {
         this.studentRepository = personRepository;
-        this.teacherService = teacherService;
     }
 
     @Override
-    public Student findById (Integer studentId) {
+    public Student findById(Integer studentId) {
         return studentRepository.findById(studentId).orElse(null);
     }
 
@@ -44,20 +36,9 @@ public class StudentServiceImpl implements StudentService {
     public Student save(StudentVM student) {
 
         Student studentRequest = new Student();
-        studentRequest.setLocalDate(LocalDate.now());
-        studentRequest.setLocalDateTime(LocalDateTime.now());
-        studentRequest.setDuration(Duration.ofDays(20));
         studentRequest.setName(student.getName());
-        studentRequest.setLaptop(student.getLaptop());
-        Set<Teacher> teacherSet = new HashSet<>();
-        Set<Integer> teacherIds = student.getTeacherIds();
-        for(Integer id : teacherIds){
-           Teacher teacher =  teacherService.findById(id);
-           if(teacher!=null){
-               teacherSet.add(teacher);
-           }
-        }
-        studentRequest.setTeacherSet(teacherSet);
+        studentRequest.setJoiningDate(LocalDateTime.now());
+        studentRequest.setDept("CSE");
         return studentRepository.save(studentRequest);
     }
 
@@ -66,12 +47,17 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findAll();
     }
 
-    public Integer deleteById(Integer studentId){
+    public Integer deleteById(Integer studentId) {
         try {
             studentRepository.deleteById(studentId);
             return studentId;
-        } catch (Exception e){
+        } catch (Exception e) {
             throw e;
         }
+    }
+
+    @Override
+    public List<String> getAllNames() {
+        return null;
     }
 }

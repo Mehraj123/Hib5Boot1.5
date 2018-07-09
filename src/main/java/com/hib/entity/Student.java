@@ -1,65 +1,23 @@
 package com.hib.entity;
 
 import javax.persistence.*;
-import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Entity
-@Table(name="STUDENT")
+@Table(name = "STUDENT")
 public class Student {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ROLL_NO")
-	private Integer rollNo;
-	@Column(name = "NAME")
-	private String name;
-    /**
-     * One Student will have only one laptop
-     */
-	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "LAPTOP_ID_FK")
-	private Laptop laptop;
+    private Integer rollNo;
+    @Column(name = "NAME")
+    private String name;
+    @Column(name = "DATE_OF_JOINING")
+    private LocalDateTime joiningDate;
+    @Column(name = "DEPARTMENT")
+    private String dept;
 
-	private LocalDate localDate;
-
-	private LocalDateTime localDateTime;
-
-	private Duration duration;
-
-    /**
-     * Many Student can be interacting more teachers
-     */
-    @ManyToMany
-    @JoinTable(name = "JOIN_STUDENT_TEACHER",
-            joinColumns = {@JoinColumn(name = "rollNo")},
-            inverseJoinColumns = {@JoinColumn(name = "id")}
-            )
-	private Set<Teacher> teacherSet;
-
-	public Student() {
-	}
-	
-	public Student(String name) {
-		this.name = name;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-    public Laptop getLaptop() {
-        return laptop;
-    }
-
-    public void setLaptop(Laptop laptop) {
-        this.laptop = laptop;
+    public Student() {
     }
 
     public Integer getRollNo() {
@@ -70,35 +28,29 @@ public class Student {
         this.rollNo = rollNo;
     }
 
-    public Set<Teacher> getTeacherSet() {
-        return teacherSet;
+    public String getName() {
+        return name;
     }
 
-    public void setTeacherSet(Set<Teacher> teacherSet) {
-        this.teacherSet = teacherSet;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public LocalDate getLocalDate() {
-        return localDate;
+
+
+    public LocalDateTime getJoiningDate() {
+        return joiningDate;
     }
 
-    public void setLocalDate(LocalDate localDate) {
-        this.localDate = localDate;
+    public void setJoiningDate(LocalDateTime joiningDate) {
+        this.joiningDate = joiningDate;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public String getDept() {
+        return dept;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
-    }
-
-    public Duration getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Duration duration) {
-        this.duration = duration;
+    public void setDept(String dept) {
+        this.dept = dept;
     }
 }
