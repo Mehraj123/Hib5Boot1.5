@@ -38,7 +38,7 @@ public class StudentServiceImpl implements StudentService {
         Student studentRequest = new Student();
         studentRequest.setName(student.getName());
         studentRequest.setJoiningDate(LocalDateTime.now());
-        studentRequest.setDept("CSE");
+        studentRequest.setDept(student.getDept());
         return studentRepository.save(studentRequest);
     }
 
@@ -58,6 +58,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<String> getAllNames() {
-        return null;
+        return studentRepository.findAllNames();
     }
 }

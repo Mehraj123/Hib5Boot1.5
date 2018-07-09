@@ -41,6 +41,11 @@ public class StudentController {
         return studentService.deleteById(id);
     }
 
+    @GetMapping("/names")
+    public List<String> findAllNames() {
+        return studentService.getAllNames();
+    }
+
     @GetMapping("/names/{name}")
     public Student findByNameLike(@PathVariable String name) {
         return studentService.findByName(name);
