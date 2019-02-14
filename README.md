@@ -1,43 +1,43 @@
-Dockering the SpringBoot 2.X with Hibernate 5.X Microservice
+# Dockering the SpringBoot 2.X with Hibernate 5.X Microservice
 
-#Docker Commands
+## Docker Commands
 
-#Show all the running container on machine
+### Show all the running container on machine
 
-1) docker ps 
-
-
-
-#Show all the available container on machine 
-
-2) docker ps -a                  
+- docker ps 
 
 
 
-#Building a docker image 
+### Show all the available container on machine 
 
-3) docker build -f Dockerfile -t myapp .
-
-
-
-#Running a docker image (Creating a docker container)
-
-4) docker run -p 2018:2018 myapp
+- docker ps -a                  
 
 
 
-#Pull mysql image from DockerHub
+### Building a docker image 
 
-5) docker pull mysql
-
-
-
-#Running a docker image (Creating a docker container)
-
-5) docker run --name=dockersql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=hotel -e MYSQL_USER=root -d mysql
+- docker build -f Dockerfile -t myapp .
 
 
 
-#Running an image with mysql 
+### Running a docker image (Creating a docker container)
 
-4) docker run --name=awesomehotel -p 2018:2018 --link dockersql:mysql -d myapp
+- docker run -p 2018:2018 myapp
+
+
+
+### Pull mysql image from DockerHub
+
+- docker pull mysql
+
+
+
+### Running a docker image (Creating a docker container)
+
+- docker run --name=dockersql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=hotel -e MYSQL_USER=root -d mysql
+
+
+
+### Running an image with mysql 
+
+- docker run --name=awesomehotel -p 2018:2018 --link dockersql:mysql -d myapp
